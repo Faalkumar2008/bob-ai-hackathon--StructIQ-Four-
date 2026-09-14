@@ -1,0 +1,64 @@
+ARIA — Screenshots Guide
+==============================================
+
+The following screenshots should be captured from the web app
+(bridge-health-app/index.html) and saved in this folder.
+
+Recommended screenshots (save as PNG):
+
+  01_dashboard_brg001.png
+      Page    : Dashboard
+      Bridge  : BRG-001 (Riverside Highway Bridge)
+      Shows   : Health score 62, RESTRICTED status, 3 alert cards,
+                sensor trend chart for S001-STRAIN-MID
+
+  02_dashboard_brg002.png
+      Page    : Dashboard
+      Bridge  : BRG-002 (Northgate Cable-Stay Bridge)
+      Shows   : Health score 88, OPERATIONAL status, 0 alerts
+
+  03_sensor_monitor.png
+      Page    : Sensor Monitor
+      Filter  : Corrosion
+      Shows   : S004-CORR-DECK card — -410 mV(CSE), orange alert border,
+                utilisation bar at 117%
+
+  04_anomaly_detection.png
+      Page    : Anomaly Detection
+      Action  : After clicking "Run Detection"
+      Shows   : Z-score bar chart with 2 sensors above threshold
+
+  05_predictive_model.png
+      Page    : Predictive Model
+      Config  : Component=Rebar, Model=Corrosion
+      Shows   : RUL result card + 3-model comparison bar chart
+
+  06_maintenance_plan.png
+      Page    : Maintenance Plan
+      Action  : After clicking "Generate Plan" with cost estimates enabled
+      Shows   : HIGH priority section with 2 actions and cost ranges
+
+  07_condition_report.png
+      Page    : Condition Report
+      Action  : After clicking "Generate Full Report"
+      Shows   : Executive summary + critical findings section
+
+  08_ai_chat.png
+      Page    : AI Assistant
+      Action  : After typing "What is the corrosion risk?"
+      Shows   : ARIA response with -410 mV reading and recommendation
+
+  09_bob_mode.png
+      App     : IBM Bob
+      Action  : Mode picker open showing "Bridge Health Monitor"
+      Shows   : ARIA mode in the mode picker list
+
+  10_bob_mcp_response.png
+      App     : IBM Bob (Bridge Health Monitor mode)
+      Action  : After typing "list all bridges"
+      Shows   : Bob calling list_bridges MCP tool and returning results
+
+How to take screenshots on Windows:
+  - Win + Shift + S  (Snipping Tool — select area)
+  - PrtScn           (full screen, paste into Paint)
+  - Snipping Tool    (Start menu → Snipping Tool)

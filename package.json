@@ -1,0 +1,49 @@
+{
+  "name": "aria-bridge-health-mcp",
+  "version": "1.0.0",
+  "description": "ARIA — AI-powered Realtime Infrastructure Analyser. Bob-integrated MCP server for bridge health monitoring and predictive maintenance.",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node build/index.js",
+    "start:api": "node build/api/server.js",
+    "dev": "ts-node src/index.ts",
+    "dev:api": "ts-node src/api/server.ts",
+    "cli": "ts-node src/cli/aria.ts",
+    "typecheck": "tsc --noEmit",
+    "clean": "node -e \"const fs=require('fs');fs.rmSync('build',{recursive:true,force:true});console.log('build/ cleaned')\""
+  },
+  "keywords": [
+    "bridge-health", "structural-monitoring", "predictive-maintenance",
+    "mcp-server", "ibm-bob", "iot-sensors", "ai-infrastructure"
+  ],
+  "author": {
+    "name": "StructIQ Four",
+    "contributors": [
+      "Faalkumar Patel (Lead)",
+      "Tirth Patel (Backend)",
+      "Shubham Patel (Frontend)",
+      "Yug Patel (Civil Engineering)"
+    ]
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "ts-node": "^10.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Faalkumar2008/bob-ai-hackathon--StructIQ-Four-.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Faalkumar2008/bob-ai-hackathon--StructIQ-Four-/issues"
+  },
+  "homepage": "https://github.com/Faalkumar2008/bob-ai-hackathon--StructIQ-Four-#readme"
+}

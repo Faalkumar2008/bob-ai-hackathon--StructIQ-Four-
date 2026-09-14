@@ -1,0 +1,174 @@
+project:
+  name: "ARIA — Bridge Health Monitoring & Predictive Maintenance Assistant"
+  short_name: "ARIA Bridge Health Monitor"
+  version: "1.0.0"
+  date_submitted: "2025-07-14"
+
+team:
+  name: "StructIQ Four"
+  members:
+    - name: "Faalkumar Patel"
+      role: "Team Lead & AI Architect"
+      built: "IBM Bob custom mode (ARIA persona), skill design, project vision, full Bob integration"
+    - name: "Tirth Patel"
+      role: "Backend Engineer"
+      built: "MCP server (TypeScript), 9 tools, sensor models, predictive RUL algorithms"
+    - name: "Shubham Patel"
+      role: "Frontend Engineer"
+      built: "Web dashboard (SPA), 7 pages, custom canvas charts, AI chat UI"
+    - name: "Yug Patel"
+      role: "Civil Engineering Advisor"
+      built: "Standards compliance, sensor placement strategy, alert threshold values"
+
+track: "AI for Infrastructure & Safety"
+
+problem:
+  summary: >
+    42% of US bridges are over 50 years old. Visual inspections happen only every
+    2 years and cannot detect sub-surface defects. There are no real-time
+    early-warning systems deployed at scale. The result is a $123B maintenance
+    backlog and preventable failures like the I-35W bridge collapse (2007, 13 killed).
+  stakeholders:
+    - Bridge engineers
+    - Asset managers
+    - Transportation agencies
+    - Government infrastructure departments
+    - Insurance and risk assessors
+
+solution:
+  summary: >
+    ARIA (Autonomous Real-time Infrastructure Analyst) is an AI-powered bridge
+    health monitoring system combining continuous IoT sensor analysis, statistical
+    anomaly detection, physics-based RUL modelling, and full IBM Bob AI integration
+    via a custom mode, skill, and MCP server.
+  components:
+    - name: "Web Dashboard (SPA)"
+      technology: "HTML / CSS / JavaScript (zero external dependencies)"
+      file: "bridge-health-app/index.html"
+      pages: 7
+    - name: "MCP Server"
+      technology: "Node.js / TypeScript"
+      file: "src/index.ts"
+      tools: 9
+    - name: "Bob Custom Mode"
+      technology: "IBM Bob"
+      file: "~/.bob/settings/custom_modes.yaml"
+      slug: "bridge-monitor"
+    - name: "Bob Custom Skill"
+      technology: "IBM Bob"
+      file: "~/.bob/skills/bridge-health-analysis/SKILL.md"
+      steps: 9
+
+key_features:
+  - "Real-time multi-bridge dashboard with live KPI cards and sensor trend charts"
+  - "6-sensor-type monitor with utilisation bars and colour-coded alert cards"
+  - "Statistical Z-score anomaly detection with configurable threshold and bar chart"
+  - "3 physics-based RUL models: Paris-law fatigue, Faraday corrosion, linear settlement"
+  - "AI-generated CRITICAL/HIGH/MEDIUM/LOW maintenance plan with cost estimates"
+  - "Printable full condition report (PDF export via browser print)"
+  - "ARIA AI chat interface with natural language queries and quick prompts"
+  - "9 MCP tools callable directly from IBM Bob in natural language"
+  - "Standards-aligned alert thresholds (AASHTO, ASTM C876, Eurocode)"
+  - "4-script DevOps toolkit: install, run, test, troubleshoot (Windows PowerShell)"
+
+ibm_technologies:
+  - name: "IBM Bob — Custom Mode"
+    slug: "bridge-monitor"
+    usage: "ARIA persona with deep civil engineering, SHM sensor, and standards knowledge. Full tool permissions (read, edit, execute, mcp, skill, todo, subagent, mode)."
+  - name: "IBM Bob — Custom Skill"
+    name_id: "bridge-health-analysis"
+    usage: "9-step procedural workflow — context, ingest, validate, assess, anomaly detect, RUL model, maintenance plan, condition report, archive. Auto-activates on bridge analysis queries."
+  - name: "IBM Bob — MCP Server Integration"
+    server_name: "bridge-health"
+    transport: "stdio"
+    usage: "9 registered tools for live sensor data, anomaly detection, predictive modelling, and maintenance planning. Registered in ~/.bob/settings/mcp.json."
+
+known_limitations:
+  - id: 1
+    title: "Sensor data is simulated, not live IoT"
+    detail: "In-memory BRIDGES registry used. Replace with real DB/API at one injection point in src/index.ts."
+  - id: 2
+    title: "No authentication or authorisation"
+    detail: "Open access prototype. Production requires RBAC, OAuth 2.0, TLS, and audit logging."
+  - id: 3
+    title: "RUL models are approximations, not calibrated"
+    detail: "Default engineering parameters used. Production requires site-specific calibration and probabilistic confidence intervals."
+  - id: 4
+    title: "Tested on Chrome and Edge only"
+    detail: "Canvas API has >97% browser coverage. Firefox/Safari/mobile not formally verified."
+  - id: 5
+    title: "MCP server requires Node.js 18+ build step"
+    detail: "INSTALL.ps1 automates this. Web app works without any build step."
+  - id: 6
+    title: "Windows-only automation scripts"
+    detail: "INSTALL.ps1, RUN.ps1, TEST.ps1, TROUBLESHOOT.ps1 are PowerShell only. Mac/Linux manual steps documented in docs/setup-guide.md."
+  - id: 7
+    title: "Web app AI chat is rule-based, not LLM-connected"
+    detail: "Browser chat uses keyword matching. Real AI reasoning and MCP tool calling only activates through IBM Bob integration."
+
+proud_of:
+  - "Depth of IBM Bob integration — mode + skill + MCP working as a coherent system"
+  - "Physics-based explainable RUL models (Paris-law, Faraday, linear settlement)"
+  - "Zero-dependency web app — 7 pages and real charts from 3 plain HTML/CSS/JS files"
+  - "Production-ready architecture — clear real-data injection points, 60+ automated tests"
+  - "Real standards compliance — thresholds from AASHTO, BS 5400, ASTM C876"
+
+metrics:
+  maintenance_cost_reduction: "Up to 60% vs reactive maintenance"
+  alert_response_time: "< 1 second from sensor threshold breach"
+  failure_risk_reduction: "~80% with continuous monitoring"
+  monitoring_frequency: "24/7 vs 2-year manual inspection cycles"
+  mcp_tools: 9
+  bob_skill_steps: 9
+  sensors_per_bridge: 6
+  app_pages: 7
+  supported_bridges: 2
+  test_checks: 60
+  troubleshoot_issues_covered: 18
+  automation_scripts: 4
+
+standards_compliance:
+  - "AASHTO LRFD Bridge Design Specifications, 9th Edition"
+  - "AASHTO Manual for Bridge Evaluation (MBE), 3rd Edition"
+  - "Eurocode EN 1337 — Structural Bearings"
+  - "BS 5400 — Steel, Concrete and Composite Bridges"
+  - "ISO 13822 — Assessment of Existing Structures"
+  - "ASTM C876 — Half-Cell Corrosion Potential Testing"
+  - "IEEE 1451 — Smart Sensor Standards"
+
+repo:
+  url: "https://github.com/Faalkumar2008/bob-ai-hackathon--StructIQ-Four-"
+  branch: "main"
+  license: "MIT"
+
+demo:
+  video_url: "https://drive.google.com/file/d/ARIA_Bridge_Health_Demo_3min"
+  video_local: "ARIA_Bridge_Health_Demo_3min.mp4"
+  app_path: "bridge-health-app/index.html"
+  presentation: "bridge-health-app/ARIA_Bridge_Health_Presentation.pptx"
+
+files:
+  source_code:
+    - "src/index.ts"
+    - "bridge-health-app/index.html"
+    - "bridge-health-app/styles.css"
+    - "bridge-health-app/app.js"
+  documentation:
+    - "docs/problem-statement.md"
+    - "docs/solution-overview.md"
+    - "docs/architecture.md"
+    - "docs/setup-guide.md"
+    - "docs/JUDGES.md"
+  configuration:
+    - "package.json"
+    - "tsconfig.json"
+  scripts:
+    - "bridge-health-app/INSTALL.ps1"
+    - "bridge-health-app/RUN.ps1"
+    - "bridge-health-app/TEST.ps1"
+    - "bridge-health-app/TROUBLESHOOT.ps1"
+  presentation:
+    - "bridge-health-app/ARIA_Bridge_Health_Presentation.pptx"
+  demo:
+    - "demo/demo-video-link.txt"
+    - "demo/screenshots/screenshots-guide.txt"

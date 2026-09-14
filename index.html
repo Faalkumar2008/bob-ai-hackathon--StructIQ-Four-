@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARIA — Bridge Health Monitoring & Predictive Maintenance</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo-wrap">
+        <div class="logo-icon">🌉</div>
+        <div>
+          <div class="logo-title">ARIA</div>
+          <div class="logo-sub">Bridge Health AI</div>
+        </div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a class="nav-item active" data-page="dashboard" href="#">
+        <span class="nav-icon">📊</span><span>Dashboard</span>
+      </a>
+      <a class="nav-item" data-page="sensors" href="#">
+        <span class="nav-icon">📡</span><span>Sensor Monitor</span>
+      </a>
+      <a class="nav-item" data-page="anomalies" href="#">
+        <span class="nav-icon">⚠️</span><span>Anomaly Detection</span>
+      </a>
+      <a class="nav-item" data-page="predictive" href="#">
+        <span class="nav-icon">🔮</span><span>Predictive Model</span>
+      </a>
+      <a class="nav-item" data-page="maintenance" href="#">
+        <span class="nav-icon">🔧</span><span>Maintenance Plan</span>
+      </a>
+      <a class="nav-item" data-page="report" href="#">
+        <span class="nav-icon">📄</span><span>Condition Report</span>
+      </a>
+      <a class="nav-item" data-page="ai" href="#">
+        <span class="nav-icon">🤖</span><span>AI Assistant</span>
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="status-dot online"></div>
+      <span>MCP Server Connected</span>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+    <!-- TOP BAR -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-btn" id="menuBtn">☰</button>
+        <div class="breadcrumb" id="breadcrumb">Dashboard</div>
+      </div>
+      <div class="topbar-right">
+        <select class="bridge-select" id="bridgeSelect">
+          <option value="BRG-001">BRG-001 — Riverside Highway Bridge</option>
+          <option value="BRG-002">BRG-002 — Northgate Cable-Stay Bridge</option>
+        </select>
+        <div class="alert-badge" id="alertBadge">3 Alerts</div>
+        <div class="time-display" id="timeClock"></div>
+      </div>
+    </header>
+
+    <!-- PAGES -->
+    <div class="page active" id="page-dashboard">
+      <div class="page-header">
+        <h1>Bridge Health Dashboard</h1>
+        <p>Real-time structural monitoring and AI-powered health assessment</p>
+      </div>
+
+      <!-- KPI CARDS -->
+      <div class="kpi-grid" id="kpiGrid"></div>
+
+      <!-- CHARTS ROW -->
+      <div class="charts-row">
+        <div class="card chart-card">
+          <div class="card-header">
+            <h3>Sensor Readings — Last 24 Hours</h3>
+            <select id="chartSensorSelect" class="mini-select"></select>
+          </div>
+          <canvas id="sensorChart" height="220"></canvas>
+        </div>
+        <div class="card chart-card">
+          <div class="card-header"><h3>Health Score Trend</h3></div>
+          <canvas id="healthChart" height="220"></canvas>
+        </div>
+      </div>
+
+      <!-- ALERTS TABLE -->
+      <div class="card">
+        <div class="card-header"><h3>Active Alerts</h3><span class="card-badge" id="alertCount"></span></div>
+        <table class="data-table" id="alertsTable">
+          <thead><tr><th>Level</th><th>Sensor</th><th>Location</th><th>Reading</th><th>Time</th><th>Action</th></tr></thead>
+          <tbody id="alertsBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SENSORS PAGE -->
+    <div class="page" id="page-sensors">
+      <div class="page-header">
+        <h1>Sensor Monitor</h1>
+        <p>Live readings from all structural sensors</p>
+      </div>
+      <div class="filter-bar">
+        <button class="filter-btn active" data-type="all">All</button>
+        <button class="filter-btn" data-type="strain">Strain</button>
+        <button class="filter-btn" data-type="vibration">Vibration</button>
+        <button class="filter-btn" data-type="displacement">Displacement</button>
+        <button class="filter-btn" data-type="corrosion">Corrosion</button>
+        <button class="filter-btn" data-type="temperature">Temperature</button>
+        <button class="filter-btn" data-type="load">Load</button>
+      </div>
+      <div class="sensor-grid" id="sensorGrid"></div>
+    </div>
+
+    <!-- ANOMALY PAGE -->
+    <div class="page" id="page-anomalies">
+      <div class="page-header">
+        <h1>Anomaly Detection</h1>
+        <p>Statistical Z-score analysis across all sensor channels</p>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h3>Detection Settings</h3>
+        </div>
+        <div class="control-row">
+          <label>Z-Score Threshold: <strong id="zThreshVal">3.0</strong></label>
+          <input type="range" id="zThresh" min="1.5" max="5" step="0.5" value="3.0" />
+          <button class="btn-primary" id="runAnomalyBtn">Run Detection</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><h3>Detection Results</h3></div>
+        <canvas id="anomalyChart" height="260"></canvas>
+        <div id="anomalyResults" class="anomaly-results"></div>
+      </div>
+    </div>
+
+    <!-- PREDICTIVE PAGE -->
+    <div class="page" id="page-predictive">
+      <div class="page-header">
+        <h1>Predictive Maintenance Model</h1>
+        <p>Remaining Useful Life (RUL) estimation using fatigue, corrosion and settlement models</p>
+      </div>
+      <div class="card">
+        <div class="card-header"><h3>Model Configuration</h3></div>
+        <div class="model-controls">
+          <div class="form-group">
+            <label>Component</label>
+            <select id="componentSelect">
+              <option value="deck">Deck</option>
+              <option value="bearing">Bearing</option>
+              <option value="girder">Girder</option>
+              <option value="pier">Pier</option>
+              <option value="rebar">Rebar</option>
+              <option value="cable">Cable</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Model Type</label>
+            <select id="modelTypeSelect">
+              <option value="fatigue">Fatigue (Paris-Law)</option>
+              <option value="corrosion">Corrosion (Faraday)</option>
+              <option value="settlement">Settlement (Linear)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Daily Load Cycles</label>
+            <input type="number" id="loadCycles" value="5000" min="100" max="100000" />
+          </div>
+          <button class="btn-primary" id="runModelBtn">Run Model</button>
+        </div>
+      </div>
+      <div id="modelResults" class="model-results"></div>
+      <div class="card" id="rulChartCard" style="display:none">
+        <div class="card-header"><h3>RUL Comparison — All Models</h3></div>
+        <canvas id="rulChart" height="240"></canvas>
+      </div>
+    </div>
+
+    <!-- MAINTENANCE PAGE -->
+    <div class="page" id="page-maintenance">
+      <div class="page-header">
+        <h1>Maintenance Plan</h1>
+        <p>AI-generated prioritised action schedule</p>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h3>Generate Plan</h3>
+        </div>
+        <div class="control-row">
+          <label><input type="checkbox" id="costEstimate" /> Include Cost Estimates</label>
+          <button class="btn-primary" id="genMaintenanceBtn">Generate Plan</button>
+        </div>
+      </div>
+      <div id="maintenanceResults"></div>
+    </div>
+
+    <!-- REPORT PAGE -->
+    <div class="page" id="page-report">
+      <div class="page-header">
+        <h1>Condition Report</h1>
+        <p>Full structural health assessment report</p>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h3>Report Options</h3>
+        </div>
+        <div class="control-row">
+          <button class="btn-primary" id="genReportBtn">Generate Full Report</button>
+          <button class="btn-secondary" id="printReportBtn">🖨️ Print / Save PDF</button>
+        </div>
+      </div>
+      <div id="reportOutput" class="report-output"></div>
+    </div>
+
+    <!-- AI PAGE -->
+    <div class="page" id="page-ai">
+      <div class="page-header">
+        <h1>AI Assistant — ARIA</h1>
+        <p>Ask ARIA anything about the bridge's structural condition</p>
+      </div>
+      <div class="ai-chat-wrap">
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="chat-input-row">
+          <input type="text" id="chatInput" placeholder="Ask ARIA: e.g. What is the corrosion risk on BRG-001?" />
+          <button class="btn-primary" id="chatSend">Send</button>
+        </div>
+        <div class="quick-prompts">
+          <span>Quick:</span>
+          <button class="qbtn" data-q="Analyse all sensor data for the current bridge">Sensor Analysis</button>
+          <button class="qbtn" data-q="What is the predicted remaining useful life of the deck?">RUL Estimate</button>
+          <button class="qbtn" data-q="List the top 3 maintenance priorities right now">Top Priorities</button>
+          <button class="qbtn" data-q="Explain the corrosion readings in detail">Corrosion Risk</button>
+          <button class="qbtn" data-q="Generate a full condition report summary">Full Report</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

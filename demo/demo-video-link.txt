@@ -1,0 +1,32 @@
+ARIA — Bridge Health Monitoring & Predictive Maintenance
+Demo Video Link
+==============================================
+
+Demo Video URL:
+[Upload your screen recording here and paste the URL]
+
+Suggested platforms:
+  - YouTube (unlisted):   https://youtube.com
+  - Google Drive:         https://drive.google.com
+  - Loom (free):          https://loom.com
+  - Vimeo:                https://vimeo.com
+
+Recommended recording tools (Windows):
+  - Xbox Game Bar:  Press Win + G  (built into Windows 10/11)
+  - OBS Studio:     https://obsproject.com  (free, professional)
+  - Loom extension: https://loom.com/download  (easiest, browser-based)
+  - Clipchamp:      Built into Windows 11
+
+Recommended video length: 3-4 minutes
+
+Suggested demo script:
+  0:00 - 0:20   Title card — ARIA, team name, IBM Bob AI module
+  0:20 - 0:50   Problem statement (show the stats: 42%, $123B)
+  0:50 - 1:30   Open the web app — Dashboard for BRG-001
+                Show health score 62, 3 alerts, live sensor chart
+  1:30 - 2:00   Switch to BRG-002 — compare healthy vs restricted bridge
+  2:00 - 2:30   Sensor Monitor → filter by Corrosion → show -410 mV alert
+  2:30 - 3:00   Predictive Model → Rebar + Corrosion → RUL result
+  3:00 - 3:30   Maintenance Plan → Generate Plan with cost estimates
+  3:30 - 3:50   AI Chat → ask ARIA "What are the top priorities?"
+  3:50 - 4:00   IBM Bob integration — show Bridge Health Monitor mode
